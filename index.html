@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title> Programming Languages </title>
+        <style>
+            *{
+                font-size: 50px;
+            }
+            body{
+                background-color: azure;
+            }
+            h1{
+                background-color: black; 
+                color: wheat;
+                width: 70%;
+            }
+            input[type=checkbox]{
+                height: 0.5em;
+                width: 2%;
+                margin-left: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1> Programming Languages Known </h1>
+            <form onsubmit="show()">
+                <input type="text" id="name" placeholder="Enter Your Name " />
+                <br/> <br/>
+                <label> Select One </label>
+                <br/>
+                <input type="checkbox"  id="py" /> <label for="py"> Python </label>
+                <input type="checkbox"  id="ja" /> <label for="ja"> Java </label>
+                <input type="checkbox"  id="js" /> <label for="js"> JavaScript </label>
+                <input type="checkbox"  id="cp" /> <label for="cp"> C Prog. </label>
+                <br/><br/>
+                <input type="submit" />
+            
+            </form>
+            <h2 id = "msg" ></h2>
+            <script>
+                function show(){
+                    event.preventDefault();
+
+                let name = document.getElementById("name");
+                let py = document.getElementById("py");
+                let ja = document.getElementById("ja");
+                let js = document.getElementById("js");
+                let cp = document.getElementById("cp");
+                let msg = document.getElementById("msg");
+                
+                let n = name.value;
+                
+                if(n.trim() === ""){
+                    alert("Please Enter Name: ");
+                    name.value = "";
+                    msg.innerHTML = "";
+                    name.focus();
+                    return;
+                }
+                if(! n.match(/^[A-Za-z ]+$/)){
+                    alert("Name Should contain only Alphabets:- ");
+                    name.value = "";
+                    msg.innerHTML = "";
+                    name.focus();
+                    return;
+                }
+                
+                let language = "";
+
+                if(py.checked)
+                    language += " Python ";
+                if(ja.checked)
+                    language += " Java ";
+                if(js.checked)
+                    language += " JavaScript ";
+                if(cp.checked)
+                    language += " C Prog. ";
+    
+            msg.innerHTML = "Name : "+n+" Languages = "+language;
+    
+            }
+        </script>
+    </center>
+    </body>
+</html>
